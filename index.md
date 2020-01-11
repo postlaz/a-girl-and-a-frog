@@ -99,7 +99,6 @@
         }
         .sigh{
             position: absolute;
-            
             width: 10px;
             height: 10px;
             background-color: white;
@@ -245,11 +244,9 @@
             20% { transform: translateX(var(--sprite-pos)) scaleX(var(--sprite-scale)); }
             100% { transform: translateX(var(--sprite-to)) scaleX(var(--sprite-scale)); }
         }
-
         .backward{
             animation: backward 0.25s steps(2) forwards;
         }
-
         @keyframes backward{
             from { 
                 background-position: -128px var(--girl-pos);
@@ -260,11 +257,9 @@
                 top: -5px;
             }
         }
-
         .forward{
             animation: forward 0.2s steps(2) forwards;
         }
-
         @keyframes forward{
             from { 
                 background-position: -256px var(--girl-pos);
@@ -302,7 +297,6 @@
         var frogInitPos = window.innerWidth/4;
         let frog = document.getElementById("frog");
         frog.style.transform = "translateX("+frogInitPos+"px)"
-        
         let shadowFrog = document.getElementById("shadow-frog");
         let aGirl = document.getElementById("aGirl");
         let sigh = document.getElementById("sigh");
@@ -325,8 +319,7 @@
         }
         let exclamation_intensity = 30;
         let exclamationArray = []
-        exclamationInit()
-        
+        exclamationInit()  
         frog.addEventListener("animationend", animationDone,false);
         aGirl.addEventListener("animationend", animationDoneAGirl,false);
         function arrow(e){
@@ -454,7 +447,6 @@
                 rainSpot.style.left = left+"%";
                 rainSpot.style.width = sizePercentage * 25+"px";
                 rainSpot.style.height = sizePercentage * 5+"px";
-
                 let rainWrapper = document.createElement("div");
                 rainWrapper.classList.add("rain-wrapper");
                 let rain = document.createElement("div");
@@ -462,7 +454,6 @@
                 rainWrapper.appendChild(rain);
                 rainWrapper.style.top = "-"+Number(100-top)+"%";
                 rainWrapper.style.left = left+"%";
-                
                 effectCanvas.appendChild(rainSpot);
                 effectCanvas.appendChild(rainWrapper);
                 setTimeout(function() {
@@ -483,7 +474,6 @@
             exclamation.style.width = width+"px";
             exclamation.style.alignSelf = pos[Math.floor(Math.random() * pos.length)];
             exclamation.style.opacity = 0;
-
             exclamationWrapper.appendChild(exclamation);
             return exclamation;
         }
@@ -508,8 +498,7 @@
                 exclamationArray[exc].style.opacity = 1;
                 exclamationArray.splice(exc, 1);
                 exclamationRun(total-1)
-            },50)
-                
+            },50) 
         }
     </script>
 </body>
