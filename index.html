@@ -322,6 +322,7 @@
         exclamationInit()  
         frog.addEventListener("animationend", animationDone,false);
         aGirl.addEventListener("animationend", animationDoneAGirl,false);
+        let aGirlStyle = window.getComputedStyle(aGirl);
         function arrow(e){
             pos = root.style.getPropertyValue("--sprite-pos").replace('px', '');
             to = Number(root.style.getPropertyValue("--sprite-to").replace('px', ''));
@@ -398,7 +399,7 @@
                     } else if (distanceNow > 170) {
                         exclamationRun(3)
                     } else if (distanceNow > 120) {
-                        aGirl.classList.add("backward");
+                        if(aGirlStyle.getPropertyValue("top") != "-5px") aGirl.classList.add("backward");
                         exclamationRun(8)
                     } else if (distanceNow > 70) {
                         exclamationRun(10)
@@ -420,8 +421,7 @@
                         exclamationWrapper.style.animation = 'disappear 1s forwards linear';
                         exclamationFirst.style.opacity = 0;
                         setTimeout(function(){if(aGirl.style.backgroundPosition == '0px bottom'){
-                            // aGirl.style.backgroundPosition = '0px top';
-                            aGirl.classList.add("forward");
+                            if(aGirlStyle.getPropertyValue("top") != "0px") aGirl.classList.add("forward");
                         }}, 1500);
                         sighStat = false;
                     }, 500);
@@ -495,8 +495,10 @@
             let quarter = Math.round((exclamationArray.length - 1) / 5);
             let exc = Number(Math.floor(Math.random() * middle)+quarter);
             setTimeout(function name(params) {
-                exclamationArray[exc].style.opacity = 1;
-                exclamationArray.splice(exc, 1);
+                if (exclamationArray[exc]) {
+                    exclamationArray[exc].style.opacity = 1;
+                    exclamationArray.splice(exc, 1);
+                }
                 exclamationRun(total-1)
             },50) 
         }
